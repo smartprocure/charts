@@ -1,0 +1,31 @@
+apiVersion: v1
+entries:
+  elasticsearch:
+  - appVersion: 6.6.2
+    created: 2019-03-22T21:52:52.765938-07:00
+    description: Flexible and powerful open source, distributed real-time search and
+      analytics engine.
+    digest: 2df32d994ff09e491add5e9aae425506a0d11bc6871b4e3dd999ba563d98f6ea
+    home: https://www.elastic.co/products/elasticsearch
+    icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
+    maintainers:
+    - email: christian@jetstack.io
+      name: simonswine
+    - email: michael.haselton@gmail.com
+      name: icereval
+    - email: pete.brown@powerhrg.com
+      name: rendhalver
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: elasticsearch
+    sources:
+    - https://www.elastic.co/products/elasticsearch
+    - https://github.com/jetstack/elasticsearch-pet
+    - https://github.com/giantswarm/kubernetes-elastic-stack
+    - https://github.com/GoogleCloudPlatform/elasticsearch-docker
+    - https://github.com/clockworksoul/helm-elasticsearch
+    - https://github.com/pires/kubernetes-elasticsearch-cluster
+    urls:
+    - elasticsearch-1.21.3.tgz
+    version: 1.21.3
+generated: 2019-03-22T21:52:52.764979-07:00
