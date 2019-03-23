@@ -177,6 +177,7 @@ data:
     name: data
     size: "30Gi"
     # storageClass: "ssd"
+    useLocalDisk: false
   readinessProbe:
     httpGet:
       path: /_cluster/health?local=true

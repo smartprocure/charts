@@ -202,10 +202,14 @@ spec:
   {{- if not .Values.data.persistence.enabled }}
       - name: data
         emptyDir: {}
+  {{- else if .Values.data.persistence.useLocalDisk }}
+      - name: data
+        hostPath:
+          path: "/mnt/disks/ssd0"
   {{- end }}
   updateStrategy:
     type: {{ .Values.data.updateStrategy.type }}
-  {{- if .Values.data.persistence.enabled }}
+  {{- if and .Values.data.persistence.enabled (not .Values.data.persistence.useLocalDisk) }}
   volumeClaimTemplates:
   - metadata:
       name: {{ .Values.data.persistence.name }}
