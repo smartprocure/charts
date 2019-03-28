@@ -40,6 +40,14 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- end -}}
 
 {{/*
+Create a default fully qualified data backup name.
+We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+*/}}
+{{- define "elasticsearch.databackup.fullname" -}}
+{{ template "elasticsearch.fullname" . }}-{{ .Values.databackup.name }}
+{{- end -}}
+
+{{/*
 Create a default fully qualified master name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
@@ -66,6 +74,17 @@ Create the name of the service account to use for the data component
     {{ default (include "elasticsearch.data.fullname" .) .Values.serviceAccounts.data.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccounts.data.name }}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Create the name of the service account to use for the data backup component
+*/}}
+{{- define "elasticsearch.serviceAccountName.databackup" -}}
+{{- if .Values.serviceAccounts.databackup.create -}}
+    {{ default (include "elasticsearch.databackup.fullname" .) .Values.serviceAccounts.databackup.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccounts.databackup.name }}
 {{- end -}}
 {{- end -}}
 
