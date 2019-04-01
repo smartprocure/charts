@@ -123,13 +123,9 @@ spec:
           value: "cold"
         - name: ES_JAVA_OPTS
           value: "-Djava.net.preferIPv4Stack=true -Xms{{ .Values.databackup.heapSize }} -Xmx{{ .Values.databackup.heapSize }} {{ .Values.cluster.additionalJavaOpts }} {{ .Values.databackup.additionalJavaOpts }}"
-        {{- if .Values.databackup.persistence.useLocalDisk }}
-          {{- $p := dict "paths" (list) -}}
-          {{- range int . | until -}}
-            {{- $noop := printf "/mnt/disks/ssd%d" . | append $p.paths | set $p "paths" -}}
-          {{- end -}}
+        {{- if .Values.databackup.paths }}
         - name: PATH_DATA
-          value: {{- join "," $p.paths }}
+          value: {{- join "," .Values.databackup.paths }}
         {{- end }}
         {{- range $key, $value :=  .Values.cluster.env }}
         - name: {{ $key }}
@@ -205,7 +201,7 @@ spec:
       volumes:
       - name: config
         configMap:
-          name: {{ template "elasticsearch.fullname" . }}-backup
+          name: {{ template "elasticsearch.fullname" . }}
 {{- if .Values.cluster.plugins }}
       - name: plugindir
         emptyDir: {}
