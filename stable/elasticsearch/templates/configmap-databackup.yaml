@@ -23,7 +23,7 @@ data:
 
 {{- if .Values.databackup.persistence.useLocalDisk }}
     path.data:
-    {{- range until .Values.databackup.persistence.localDiskCount }}
+    {{- range until (int .Values.databackup.persistence.localDiskCount) }}
       - /mnt/disks/ssd{{ . }}
     {{- end }}
 {{- end }}

@@ -142,7 +142,7 @@ spec:
         - mountPath: /usr/share/elasticsearch/data
           name: data
 {{- if .Values.data.persistence.useLocalDisk }}
-  {{- range until .Values.data.persistence.localDiskCount }}
+  {{- range until (int .Values.data.persistence.localDiskCount) }}
         - mountPath: /mnt/disks/ssd{{ . }}
           name: data{{ . }}
   {{- end }}
@@ -210,7 +210,7 @@ spec:
         emptyDir: {}
   {{- end }}
   {{- if .Values.data.persistence.useLocalDisk }}
-    {{- range until .Values.data.persistence.localDiskCount }}
+    {{- range until (int .Values.data.persistence.localDiskCount) }}
       - name: data{{ . }}
         hostPath:
           path: /mnt/disks/ssd{{ . }}
