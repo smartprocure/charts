@@ -66,12 +66,12 @@ spec:
 {{ toYaml .Values.databackup.tolerations | indent 8 }}
 {{- end }}
       initContainers:
-{{- if .Values.databackup.persistence.useLocalDisk }}
+{{- if .Values.data.persistence.useLocalDisk }}
       - name: "mdadm"
         image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
         imagePullPolicy: {{ .Values.initImage.pullPolicy | quote }}
         resources:
-{{ toYaml .Values.databackup.initResources | indent 12 }}
+{{ toYaml .Values.data.initResources | indent 12 }}
         command:
         - /bin/bash
         - -c
