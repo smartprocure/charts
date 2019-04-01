@@ -141,6 +141,12 @@ spec:
         volumeMounts:
         - mountPath: /usr/share/elasticsearch/data
           name: data
+{{- if .Values.data.persistence.useLocalDisk }}
+  {{- range until 0 .Values.data.persistence.localDiskCount }}
+        - mountPath: /mnt/disks/ssd{{ . }}
+          name: data{{ . }}
+  {{- end }}
+{{- end }}
         - mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
           name: config
           subPath: elasticsearch.yml
@@ -202,10 +208,13 @@ spec:
   {{- if not .Values.data.persistence.enabled }}
       - name: data
         emptyDir: {}
-  {{- else if .Values.data.persistence.useLocalDisk }}
-      - name: data
+  {{- end }}
+  {{- if .Values.data.persistence.useLocalDisk }}
+    {{- range until 0 .Values.data.persistence.localDiskCount }}
+      - name: data{{ . }}
         hostPath:
-          path: "/mnt/disks/ssd0"
+          path: /mnt/disks/ssd{{ . }}
+    {{- end }}
   {{- end }}
   updateStrategy:
     type: {{ .Values.data.updateStrategy.type }}

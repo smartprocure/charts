@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   elasticsearch:
   - appVersion: 6.7.0
-    created: 2019-04-01T09:29:44.978169-07:00
+    created: 2019-04-01T09:36:43.939869-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: 927797e7c3d3ce1c5cc218981658e3cf4926c7282fa712ed1c4f7c66818ac8e1
@@ -26,10 +26,10 @@ entries:
     - https://github.com/clockworksoul/helm-elasticsearch
     - https://github.com/pires/kubernetes-elasticsearch-cluster
     urls:
-    - elasticsearch-1.22.0.tgz
+    - docs/elasticsearch-1.22.0.tgz
     version: 1.22.0
   - appVersion: 6.6.2
-    created: 2019-04-01T09:29:44.977298-07:00
+    created: 2019-04-01T09:36:43.938488-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: c7d44700fe9c05837ffdd0b44a74178f15d53d4e4eaddc1db4440387f70c17eb
@@ -53,6 +53,6 @@ entries:
     - https://github.com/clockworksoul/helm-elasticsearch
     - https://github.com/pires/kubernetes-elasticsearch-cluster
     urls:
-    - elasticsearch-1.21.3.tgz
+    - docs/elasticsearch-1.21.3.tgz
     version: 1.21.3
-generated: 2019-04-01T09:29:44.975671-07:00
+generated: 2019-04-01T09:36:43.935706-07:00

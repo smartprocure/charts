@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "elasticsearch.fullname" . }}
+  name: {{ template "elasticsearch.fullname" . }}-backup
   labels:
     app: {{ template "elasticsearch.fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
@@ -21,12 +21,13 @@ data:
 {{- end }}
     node.name: ${HOSTNAME}
 
-{{- if .Values.data.persistence.useLocalDisk }}
+{{- if .Values.databackup.persistence.useLocalDisk }}
     path.data:
-    {{- range until 0 .Values.data.persistence.localDiskCount }}
+    {{- range until 0 .Values.databackup.persistence.localDiskCount }}
       - /mnt/disks/ssd{{ . }}
     {{- end }}
 {{- }}
+
 
     network.host: 0.0.0.0
 

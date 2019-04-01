@@ -181,6 +181,7 @@ data:
     size: "30Gi"
     # storageClass: "ssd"
     useLocalDisk: false
+    localDiskCount: 1
   readinessProbe:
     httpGet:
       path: /_cluster/health?local=true
@@ -232,6 +233,7 @@ databackup:
     size: "30Gi"
     # storageClass: "ssd"
     useLocalDisk: false
+    localDiskCount: 1
   readinessProbe:
     httpGet:
       path: /_cluster/health?local=true
