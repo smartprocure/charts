@@ -123,6 +123,14 @@ spec:
           value: "cold"
         - name: ES_JAVA_OPTS
           value: "-Djava.net.preferIPv4Stack=true -Xms{{ .Values.databackup.heapSize }} -Xmx{{ .Values.databackup.heapSize }} {{ .Values.cluster.additionalJavaOpts }} {{ .Values.databackup.additionalJavaOpts }}"
+        {{- if .Values.databackup.persistence.useLocalDisk }}
+          {{- $p := dict "paths" (list) -}}
+          {{- range int . | until -}}
+            {{- $noop := printf "/mnt/disks/ssd%d" . | append $p.paths | set $p "paths" -}}
+          {{- end -}}
+        - name: PATH_DATA
+          value: {{- join "," $p.paths }}
+        {{- end }}
         {{- range $key, $value :=  .Values.cluster.env }}
         - name: {{ $key }}
           value: {{ $value | quote }}

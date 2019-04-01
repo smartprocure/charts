@@ -21,12 +21,7 @@ data:
 {{- end }}
     node.name: ${HOSTNAME}
 
-{{- if .Values.data.persistence.useLocalDisk }}
-    path.data:
-    {{- range until (int .Values.data.persistence.localDiskCount) }}
-      - /mnt/disks/ssd{{ . }}
-    {{- end }}
-{{- end }}
+    path.data: ${PATH_DATA:/usr/share/elasticsearch/data}
 
     network.host: 0.0.0.0
 
