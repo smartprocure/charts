@@ -216,6 +216,8 @@ spec:
         emptyDir: {}
   {{- end }}
   {{- if .Values.databackup.persistence.useLocalDisk }}
+      - name: data
+        emptyDir: {}
     {{- range until (int .Values.databackup.persistence.localDiskCount) }}
       - name: data{{ . }}
         hostPath:
