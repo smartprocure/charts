@@ -43,7 +43,7 @@ image:
   #   - registry-secret
 
 initImage:
-  repository: "ubuntu"
+  repository: "busybox"
   tag: "latest"
   pullPolicy: "Always"
 

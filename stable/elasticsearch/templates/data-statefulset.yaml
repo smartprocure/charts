@@ -66,42 +66,6 @@ spec:
 {{ toYaml .Values.data.tolerations | indent 8 }}
 {{- end }}
       initContainers:
-{{- if .Values.data.persistence.useLocalDisk }}
-      - name: "mdadm"
-        image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
-        imagePullPolicy: {{ .Values.initImage.pullPolicy | quote }}
-        resources:
-{{ toYaml .Values.data.initResources | indent 12 }}
-        command:
-        - /bin/bash
-        - -c
-        - >
-          set -e;
-          set -x;
-          if [ ! -d "/mnt/disks/md0" ]; then
-            for i in {0..7};
-              if [ -d "/mnt/disks/ssd${i}" ]; then
-                DISK[i] = "/mnt/disks/ssd${i}";
-                DEVICE[i] = "/dev/disk/by-id/google-local-ssd-${i}";
-              fi;
-            fi;
-            umount ${DISK[*]};
-            apt-get update;
-            apt-get install mdadm --no-install-recommends;
-            mdadm --run --create /dev/md0 --level=0 --raid-devices=4 ${DEVICE[*]};
-            mkfs.ext4 -F /dev/md0;
-            mkdir -p /mnt/disks/md0;
-            mount /dev/md0 /mnt/disks/md0;
-            chmod a+w /mnt/disks/md0;
-          fi
-        securityContext:
-          privileged: true
-        volumeMounts:
-        - mountPath: /mnt/disks
-          name: disks
-        - mountPath: /dev
-          name: devices
-{{- end }}
 {{- if .Values.sysctlInitContainer.enabled }}
       # see https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html
       # and https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration-memory.html#mlockall
@@ -241,13 +205,7 @@ spec:
   {{- else if .Values.data.persistence.useLocalDisk }}
       - name: data
         hostPath:
-          path: "/mnt/disks/md0"
-      - name: disks
-        hostPath:
-          path: "/mnt/disks"
-      - name: devices
-        hostPath:
-          path: "/dev"
+          path: "/mnt/disks/ssd0"
   {{- end }}
   updateStrategy:
     type: {{ .Values.data.updateStrategy.type }}
