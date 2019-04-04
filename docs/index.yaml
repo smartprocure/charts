@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   elasticsearch:
   - appVersion: 6.7.0
-    created: 2019-04-01T10:24:01.216287-07:00
+    created: 2019-04-03T18:17:58.394802-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
-    digest: fbe88d2f16217afbe3d99d05a711688642cb9e6c7223b8e3af87581665d7843b
+    digest: b405a1032f954227f45bd5b0eca90d0735512c2c08045bbeb660257638d0a6b1
     home: https://www.elastic.co/products/elasticsearch
     icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
     maintainers:
@@ -29,7 +29,7 @@ entries:
     - elasticsearch-1.22.0.tgz
     version: 1.22.0
   - appVersion: 6.6.2
-    created: 2019-04-01T10:24:01.215451-07:00
+    created: 2019-04-03T18:17:58.393969-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: c7d44700fe9c05837ffdd0b44a74178f15d53d4e4eaddc1db4440387f70c17eb
@@ -55,4 +55,4 @@ entries:
     urls:
     - elasticsearch-1.21.3.tgz
     version: 1.21.3
-generated: 2019-04-01T10:24:01.213934-07:00
+generated: 2019-04-03T18:17:58.392073-07:00

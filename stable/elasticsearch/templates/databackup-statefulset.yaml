@@ -119,8 +119,6 @@ spec:
           valueFrom:
             resourceFieldRef:
               resource: limits.cpu
-        - name: NODE_TYPE
-          value: "cold"
         - name: ES_JAVA_OPTS
           value: "-Djava.net.preferIPv4Stack=true -Xms{{ .Values.databackup.heapSize }} -Xmx{{ .Values.databackup.heapSize }} {{ .Values.cluster.additionalJavaOpts }} {{ .Values.databackup.additionalJavaOpts }}"
         {{- if .Values.databackup.paths }}
@@ -128,6 +126,10 @@ spec:
           value: {{ join "," .Values.databackup.paths }}
         {{- end }}
         {{- range $key, $value :=  .Values.cluster.env }}
+        - name: {{ $key }}
+          value: {{ $value | quote }}
+        {{- end }}
+        {{- range $key, $value :=  .Values.databackup.env }}
         - name: {{ $key }}
           value: {{ $value | quote }}
         {{- end }}

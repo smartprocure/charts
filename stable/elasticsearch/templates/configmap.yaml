@@ -90,11 +90,6 @@ data:
     gateway.recover_after_master_nodes: ${RECOVER_AFTER_MASTER_NODES:2}
     gateway.recover_after_data_nodes: ${RECOVER_AFTER_DATA_NODES:1}
 
-    # add rack awareness settings for backup
-    cluster.routing.allocation.awareness.attributes: nodeType
-    cluster.routing.allocation.awareness.force.nodeType.values: hot,cold
-    node.attr.nodeType: ${NODE_TYPE:hot}
-
 {{- with .Values.cluster.config }}
 {{ toYaml . | indent 4 }}
 {{- end }}
