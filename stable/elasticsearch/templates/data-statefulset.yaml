@@ -226,6 +226,7 @@ spec:
           path: /mnt/disks/ssd{{ . }}
     {{- end }}
   {{- end }}
+  podManagementPolicy: {{ .Values.data.podManagementPolicy }}
   updateStrategy:
     type: {{ .Values.data.updateStrategy.type }}
   {{- if and .Values.data.persistence.enabled (not .Values.data.persistence.useLocalDisk) }}
