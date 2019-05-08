@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   elasticsearch:
   - appVersion: 6.7.0
-    created: 2019-04-11T11:22:03.889488-07:00
+    created: 2019-05-08T10:19:38.862456-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: c2d99872091485eb640a4a444d41c3afeb529bb1e2040f099794b6003f678fcb
@@ -29,7 +29,7 @@ entries:
     - elasticsearch-1.24.0.tgz
     version: 1.24.0
   - appVersion: 6.7.0
-    created: 2019-04-11T11:22:03.888566-07:00
+    created: 2019-05-08T10:19:38.860558-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: b405a1032f954227f45bd5b0eca90d0735512c2c08045bbeb660257638d0a6b1
@@ -56,7 +56,7 @@ entries:
     - elasticsearch-1.22.0.tgz
     version: 1.22.0
   - appVersion: 6.6.2
-    created: 2019-04-11T11:22:03.887166-07:00
+    created: 2019-05-08T10:19:38.858979-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: c7d44700fe9c05837ffdd0b44a74178f15d53d4e4eaddc1db4440387f70c17eb
@@ -82,4 +82,21 @@ entries:
     urls:
     - elasticsearch-1.21.3.tgz
     version: 1.21.3
-generated: 2019-04-11T11:22:03.884556-07:00
+  mssql-linux:
+  - apiVersion: v1
+    appVersion: 14.0.3023.8
+    created: 2019-05-08T10:19:38.863037-07:00
+    description: SQL Server 2017 Linux Helm Chart
+    digest: f1b54f24c0ebe575ffb8c0b1aafc84e217ef2de361c2580cfa96b0a311a07f7e
+    home: https://hub.docker.com/r/microsoft/mssql-server-linux/
+    icon: https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1I4Dx
+    maintainers:
+    - email: tliddle30@gmail.com
+      name: thomasliddledba
+    name: mssql-linux
+    sources:
+    - https://hub.docker.com/r/microsoft/mssql-server-linux/
+    urls:
+    - mssql-linux-0.7.0.tgz
+    version: 0.7.0
+generated: 2019-05-08T10:19:38.857092-07:00
