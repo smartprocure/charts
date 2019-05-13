@@ -2,7 +2,34 @@ apiVersion: v1
 entries:
   elasticsearch:
   - appVersion: 6.7.0
-    created: 2019-05-08T10:19:38.862456-07:00
+    created: 2019-05-13T13:12:04.71997-07:00
+    description: Flexible and powerful open source, distributed real-time search and
+      analytics engine.
+    digest: fac17737045084b33ed802eb485f43132d1219bbfbca071f9a54a19e177e5139
+    home: https://www.elastic.co/products/elasticsearch
+    icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
+    maintainers:
+    - email: christian@jetstack.io
+      name: simonswine
+    - email: michael.haselton@gmail.com
+      name: icereval
+    - email: pete.brown@powerhrg.com
+      name: rendhalver
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: elasticsearch
+    sources:
+    - https://www.elastic.co/products/elasticsearch
+    - https://github.com/jetstack/elasticsearch-pet
+    - https://github.com/giantswarm/kubernetes-elastic-stack
+    - https://github.com/GoogleCloudPlatform/elasticsearch-docker
+    - https://github.com/clockworksoul/helm-elasticsearch
+    - https://github.com/pires/kubernetes-elasticsearch-cluster
+    urls:
+    - elasticsearch-1.26.1.tgz
+    version: 1.26.1
+  - appVersion: 6.7.0
+    created: 2019-05-13T13:12:04.718816-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: c2d99872091485eb640a4a444d41c3afeb529bb1e2040f099794b6003f678fcb
@@ -29,7 +56,7 @@ entries:
     - elasticsearch-1.24.0.tgz
     version: 1.24.0
   - appVersion: 6.7.0
-    created: 2019-05-08T10:19:38.860558-07:00
+    created: 2019-05-13T13:12:04.717098-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: b405a1032f954227f45bd5b0eca90d0735512c2c08045bbeb660257638d0a6b1
@@ -56,7 +83,7 @@ entries:
     - elasticsearch-1.22.0.tgz
     version: 1.22.0
   - appVersion: 6.6.2
-    created: 2019-05-08T10:19:38.858979-07:00
+    created: 2019-05-13T13:12:04.715169-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: c7d44700fe9c05837ffdd0b44a74178f15d53d4e4eaddc1db4440387f70c17eb
@@ -85,9 +112,9 @@ entries:
   mssql-linux:
   - apiVersion: v1
     appVersion: 14.0.3023.8
-    created: 2019-05-08T10:19:38.863037-07:00
+    created: 2019-05-13T13:12:04.720649-07:00
     description: SQL Server 2017 Linux Helm Chart
-    digest: f1b54f24c0ebe575ffb8c0b1aafc84e217ef2de361c2580cfa96b0a311a07f7e
+    digest: 431339b7c1bd8555878c233c1ad1578d434d9b3e05060566249ff8f899537d24
     home: https://hub.docker.com/r/microsoft/mssql-server-linux/
     icon: https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1I4Dx
     maintainers:
@@ -99,4 +126,4 @@ entries:
     urls:
     - mssql-linux-0.7.0.tgz
     version: 0.7.0
-generated: 2019-05-08T10:19:38.857092-07:00
+generated: 2019-05-13T13:12:04.713233-07:00
