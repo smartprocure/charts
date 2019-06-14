@@ -3,7 +3,39 @@ entries:
   elasticsearch:
   - apiVersion: v1
     appVersion: 6.7.0
-    created: 2019-06-04T12:21:16.570766-07:00
+    created: 2019-06-14T13:09:51.058363-07:00
+    description: Flexible and powerful open source, distributed real-time search and
+      analytics engine.
+    digest: 008bd59f84f431099b0d521d9d4fbe3ddf74c5aabb7105bbeafe5ee009ea7c56
+    home: https://www.elastic.co/products/elasticsearch
+    icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
+    maintainers:
+    - email: christian@jetstack.io
+      name: simonswine
+    - email: michael.haselton@gmail.com
+      name: icereval
+    - email: pete.brown@powerhrg.com
+      name: rendhalver
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    - email: goonohc@gmail.com
+      name: KongZ
+    - email: hfernandez@mesosphere.com
+      name: hectorj2f
+    name: elasticsearch
+    sources:
+    - https://www.elastic.co/products/elasticsearch
+    - https://github.com/jetstack/elasticsearch-pet
+    - https://github.com/giantswarm/kubernetes-elastic-stack
+    - https://github.com/GoogleCloudPlatform/elasticsearch-docker
+    - https://github.com/clockworksoul/helm-elasticsearch
+    - https://github.com/pires/kubernetes-elasticsearch-cluster
+    urls:
+    - elasticsearch-1.28.5.tgz
+    version: 1.28.5
+  - apiVersion: v1
+    appVersion: 6.7.0
+    created: 2019-06-14T13:09:51.057422-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: 3c797fff605a6926dbd1ef2fabb4e0f14155bf60d184cdb6b2de74011fd6eb4d
@@ -32,7 +64,7 @@ entries:
     - elasticsearch-1.28.0.tgz
     version: 1.28.0
   - appVersion: 6.7.0
-    created: 2019-06-04T12:21:16.569884-07:00
+    created: 2019-06-14T13:09:51.055809-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: fac17737045084b33ed802eb485f43132d1219bbfbca071f9a54a19e177e5139
@@ -59,7 +91,7 @@ entries:
     - elasticsearch-1.26.1.tgz
     version: 1.26.1
   - appVersion: 6.7.0
-    created: 2019-06-04T12:21:16.569102-07:00
+    created: 2019-06-14T13:09:51.054584-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: c2d99872091485eb640a4a444d41c3afeb529bb1e2040f099794b6003f678fcb
@@ -86,7 +118,7 @@ entries:
     - elasticsearch-1.24.0.tgz
     version: 1.24.0
   - appVersion: 6.7.0
-    created: 2019-06-04T12:21:16.568357-07:00
+    created: 2019-06-14T13:09:51.05345-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: b405a1032f954227f45bd5b0eca90d0735512c2c08045bbeb660257638d0a6b1
@@ -113,7 +145,7 @@ entries:
     - elasticsearch-1.22.0.tgz
     version: 1.22.0
   - appVersion: 6.6.2
-    created: 2019-06-04T12:21:16.567631-07:00
+    created: 2019-06-14T13:09:51.05238-07:00
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: c7d44700fe9c05837ffdd0b44a74178f15d53d4e4eaddc1db4440387f70c17eb
@@ -142,7 +174,26 @@ entries:
   elasticsearch-exporter:
   - apiVersion: v1
     appVersion: 1.0.2
-    created: 2019-06-04T12:21:16.571472-07:00
+    created: 2019-06-14T13:09:51.060957-07:00
+    description: Elasticsearch stats exporter for Prometheus
+    digest: a8ddccb5c95df3e7ebb5b3c26df950b81f75dbccacea85d924f5c48ba0a4bb3a
+    home: https://github.com/justwatchcom/elasticsearch_exporter
+    keywords:
+    - metrics
+    - elasticsearch
+    - monitoring
+    maintainers:
+    - email: sven.mueller@commercetools.com
+      name: svenmueller
+    name: elasticsearch-exporter
+    sources:
+    - https://github.com/justwatchcom/elasticsearch_exporter
+    urls:
+    - elasticsearch-exporter-1.4.0.tgz
+    version: 1.4.0
+  - apiVersion: v1
+    appVersion: 1.0.2
+    created: 2019-06-14T13:09:51.060043-07:00
     description: Elasticsearch stats exporter for Prometheus
     digest: 5864e696ab00264bd930d2abda324e5c1329b87eb83b259c7dd9c2713deb15b5
     home: https://github.com/justwatchcom/elasticsearch_exporter
@@ -161,7 +212,7 @@ entries:
     version: 1.3.0
   - apiVersion: v1
     appVersion: 1.0.2
-    created: 2019-06-04T12:21:16.571118-07:00
+    created: 2019-06-14T13:09:51.05906-07:00
     description: Elasticsearch stats exporter for Prometheus
     digest: 57d7caea5bd52ec8fc9647e0698dc7567d7f2ef10ad579897ed3a3c1a6aeb18f
     home: https://github.com/justwatchcom/elasticsearch_exporter
@@ -181,7 +232,23 @@ entries:
   mssql-linux:
   - apiVersion: v1
     appVersion: 14.0.3023.8
-    created: 2019-06-04T12:21:16.571924-07:00
+    created: 2019-06-14T13:09:51.062711-07:00
+    description: SQL Server 2017 Linux Helm Chart
+    digest: 0f22ad0e9adab29eec267852023c30c10a92840dd5d13431a83b8409fdd239c6
+    home: https://hub.docker.com/r/microsoft/mssql-server-linux/
+    icon: https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1I4Dx
+    maintainers:
+    - email: tliddle30@gmail.com
+      name: thomasliddledba
+    name: mssql-linux
+    sources:
+    - https://hub.docker.com/r/microsoft/mssql-server-linux/
+    urls:
+    - mssql-linux-0.8.0.tgz
+    version: 0.8.0
+  - apiVersion: v1
+    appVersion: 14.0.3023.8
+    created: 2019-06-14T13:09:51.0619-07:00
     description: SQL Server 2017 Linux Helm Chart
     digest: 7dcf73fc97371948d335a7386538eb15316f359ef7be1895de6d17a3d591000e
     home: https://hub.docker.com/r/microsoft/mssql-server-linux/
@@ -195,4 +262,4 @@ entries:
     urls:
     - mssql-linux-0.7.0.tgz
     version: 0.7.0
-generated: 2019-06-04T12:21:16.56562-07:00
+generated: 2019-06-14T13:09:51.049798-07:00
