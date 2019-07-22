@@ -3,6 +3,10 @@ kind: Deployment
 metadata:
   name: {{ include "prometheus-mongodb-exporter.fullname" . }}
   labels:
+    app: {{ template "prometheus-mongodb-exporter.name" . }}
+    chart: {{ template "prometheus-mongodb-exporter.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
     app.kubernetes.io/name: {{ include "prometheus-mongodb-exporter.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
@@ -22,6 +26,8 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "prometheus-mongodb-exporter.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+        app: {{ template "prometheus-mongodb-exporter.name" . }}
+        release: {{ .Release.Name }}
     spec:
       containers:
       - name: mongodb-exporter
