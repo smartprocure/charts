@@ -3,7 +3,7 @@ restartPolicy: Always
 image:
   repository: githubfree/sql_exporter
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
   ## Optionally specify an array of imagePullSecrets.
   ## Secrets must be manually created in the namespace.
