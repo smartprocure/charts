@@ -1,0 +1,14 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: {{ if .Values.secretConfig -}} Secret {{- else -}} ConfigMap {{- end }}
+metadata:
+  name: {{ template "prometheus-sql-exporter.fullname" . }}
+  labels:
+    chart: {{ template "prometheus-sql-exporter.chart" . }}
+    app: {{ template "prometheus-sql-exporter.name" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+{{ if .Values.secretConfig -}} stringData: {{- else -}} data: {{- end }}
+  sql_exporter.yaml: |
+{{ toYaml .Values.config | indent 4 }}
+{{- end }}

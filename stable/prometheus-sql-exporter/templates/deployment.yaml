@@ -1,0 +1,91 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "prometheus-sql-exporter.fullname" . }}
+  labels:
+    chart: {{ template "prometheus-sql-exporter.chart" . }}
+    app: {{ template "prometheus-sql-exporter.name" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "prometheus-sql-exporter.name" . }}
+      release: "{{ .Release.Name }}"
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ template "prometheus-sql-exporter.name" . }}
+        release: "{{ .Release.Name }}"
+      annotations:
+{{ toYaml .Values.podAnnotations | indent 8 }}
+    spec:
+    {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+    {{- end }}
+    {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+    {{- end }}
+    {{- if .Values.tolerations }}
+      tolerations:
+{{ toYaml .Values.tolerations | indent 6 }}
+    {{- end }}
+    {{- if .Values.image.pullSecrets }}
+      imagePullSecrets:
+      {{- range .Values.image.pullSecrets }}
+        - name: {{ . }}
+      {{- end }}
+    {{- end }}
+
+      restartPolicy: {{ .Values.restartPolicy }}
+      containers:
+        - name: sql-exporter
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+          args:
+{{- if .Values.config }}
+            - "--config.file=/config/sql_exporter.yaml"
+{{- else }}
+            - "--config.file=/etc/sql_exporter/config.yml"
+{{- end }}
+        {{- if .Values.extraArgs }}
+{{ toYaml .Values.extraArgs | indent 12 }}
+        {{- end }}
+          securityContext:
+            readOnlyRootFilesystem: true
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+              name: http
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          volumeMounts:
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: config
+{{- if .Values.secretConfig }}
+          secret:
+            secretName: {{ template "prometheus-sql-exporter.fullname" . }}
+{{- else }}
+          configMap:
+            name: {{ template "prometheus-sql-exporter.fullname" . }}
+{{- end }}
