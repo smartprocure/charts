@@ -62,8 +62,8 @@ spec:
         {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 12 }}
         {{- end }}
-          securityContext:
-            readOnlyRootFilesystem: true
+          # securityContext:
+          #   readOnlyRootFilesystem: true
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           ports:
