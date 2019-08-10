@@ -240,7 +240,10 @@ ingress:
     #   hosts:
     #     - chart-example.local
 
-podAnnotations: {}
+podAnnotations: 
+  prometheus.io/scrape: "true"
+  prometheus.io/path: "/metrics"
+  prometheus.io/port: "9399"
 
 extraArgs: []
 #  --history.limit=1000
