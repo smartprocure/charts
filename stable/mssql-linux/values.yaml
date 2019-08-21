@@ -9,7 +9,7 @@ hadr: 0
 # sapassword: "MyStrongPassword1234"
 image:
   repository: us.gcr.io/evident-plane-94217/mssql-linux
-  tag: 2017-CU13
+  tag: 2017-CU16
   pullPolicy: IfNotPresent
   ## It is possible to specify docker registry credentials
   ## See https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
