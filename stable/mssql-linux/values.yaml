@@ -5,10 +5,14 @@ edition:
 collation: SQL_Latin1_General_CP1_CI_AS
 lcid: 1033
 hadr: 0
+agent:
+  enabled: false
 # Override sapassword in templates/secret.yaml
 # sapassword: "MyStrongPassword1234"
+existingSecret: ""
+existingSecretKey: sapassword
 image:
-  repository: us.gcr.io/evident-plane-94217/mssql-linux
+  repository: microsoft/mssql-server-linux
   tag: 2017-CU16
   pullPolicy: IfNotPresent
   ## It is possible to specify docker registry credentials
@@ -28,6 +32,7 @@ service:
   port: 1433
   annotations: {}
   labels: {}
+  loadBalancerIP:
 deployment:
   annotations: {}
   labels: {}
@@ -49,6 +54,7 @@ persistence:
   backupSize: 1Gi
   masterAccessMode: ReadWriteOnce
   masterSize: 1Gi
+  localDisks: 0
 livenessprobe:
   initialDelaySeconds: 15
   periodSeconds: 20

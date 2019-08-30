@@ -52,8 +52,8 @@ spec:
             - name: SA_PASSWORD
               valueFrom:
                secretKeyRef:
-                 name: {{ template "mssql.fullname" . }}-secret
-                 key: sapassword
+                 name: {{ template "mssql.secret" . }}
+                 key: {{ template "mssql.passwordKey" . }}
             - name: MSSQL_DATA_DIR
               value: /mssql-data/data
             - name: MSSQL_LOG_DIR
@@ -72,6 +72,8 @@ spec:
               value: /mssql-data/master/mastlog.ldf
             - name: MSSQL_ENABLE_HADR
               value: "{{ .Values.hadr }}"
+            - name: MSSQL_AGENT_ENABLED
+              value: {{ .Values.agent.enabled | quote }}
             {{ if .Values.resources.limits.memory }}
             - name: MSSQL_MEMORY_LIMIT_MB
               valueFrom:
@@ -91,6 +93,10 @@ spec:
               mountPath: /mssql-backup/backup
             - name: master
               mountPath: /mssql-data/master
+            {{- range $k, $v := until (int .Values.persistence.localDisks) }}
+            - name: "local{{$v}}"
+              mountPath: "/mssql-local/local{{$v}}"
+            {{- end }}
           livenessProbe:
              tcpSocket:
                port: mssql
@@ -151,4 +157,9 @@ spec:
           {{- end }}
       {{- else }}
         emptyDir: {}
+      {{- end }}
+      {{- range $k, $v := until (int .Values.persistence.localDisks) }}
+      - name: "local{{$v}}"
+        hostPath:
+          path: "/mnt/disks/ssd{{$v}}"
       {{- end }}
