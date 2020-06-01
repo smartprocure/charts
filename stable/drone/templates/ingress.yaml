@@ -1,7 +1,7 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "drone.fullname" . }}
 {{- $httpPort := .Values.service.httpPort }}
-apiVersion: extensions/v1beta1
+apiVersion: {{ template "drone.ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   annotations:

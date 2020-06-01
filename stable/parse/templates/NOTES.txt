@@ -1,3 +1,23 @@
+This Helm chart is deprecated
+
+Given the `stable` deprecation timeline (https://github.com/helm/charts#deprecation-timeline), the Bitnami maintained Helm chart is now located at bitnami/charts (https://github.com/bitnami/charts/).
+
+The Bitnami repository is already included in the Hubs and we will continue providing the same cadence of updates, support, etc that we've been keeping here these years. Installation instructions are very similar, just adding the _bitnami_ repo and using it during the installation (`bitnami/<chart>` instead of `stable/<chart>`)
+
+```bash
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm install my-release bitnami/<chart>           # Helm 3
+$ helm install --name my-release bitnami/<chart>    # Helm 2
+```
+
+To update an exisiting _stable_ deployment with a chart hosted in the bitnami repository you can execute
+
+```bash
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm upgrade my-release bitnami/<chart>
+```
+
+Issues and PRs related to the chart itself will be redirected to `bitnami/charts` GitHub repository. In the same way, we'll be happy to answer questions related to this migration process in this issue (https://github.com/helm/charts/issues/20969) created as a common place for discussion.
 
 ******************************************************************
 *** PLEASE BE PATIENT: Parse may take a few minutes to install ***
@@ -18,20 +38,21 @@ Parse Server
 
 {{- else if contains "NodePort" .Values.service.type }}
 
-  export NODE_PORT=$(kubectl get svc --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" {{ template "parse.fullname" . }})
+  export NODE_PORT=$(kubectl get svc --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" {{ include "parse.fullname" . }})
   export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
   export SERVICE_HOST=$NODE_IP:$NODE_PORT
 
 {{- else if contains "LoadBalancer" .Values.service.type }}
 
   NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-        Watch the status with: 'kubectl get svc --namespace {{ .Release.Namespace }} -w {{ template "parse.fullname" . }}'
+        Watch the status with: 'kubectl get svc --namespace {{ .Release.Namespace }} -w {{ include "parse.fullname" . }}'
 
-  export SERVICE_HOST=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ template "parse.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}"):{{ .Values.server.port }}
+  export SERVICE_HOST=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "parse.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}"):{{ .Values.server.port }}
 
 {{- else if contains "ClusterIP"  .Values.service.type }}
 
-  kubectl port-forward --namespace {{ .Release.Namespace }} svc/{{ template "parse.fullname" . }} 1337:{{ .Values.server.port }} &
+  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l app.kubernetes.io/name={{ template "parse.name" . }},app.kubernetes.io/component=server -o jsonpath="{.items[0].metadata.name}")
+  kubectl port-forward --namespace {{ .Release.Namespace }} $POD_NAME 1337:1337 &
   export SERVICE_HOST=127.0.0.1:1337
 
 {{- end }}
@@ -59,14 +80,14 @@ service:
 1. Get the Parse Server URL by running:
 
   NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-        Watch the status with: 'kubectl get svc --namespace {{ .Release.Namespace }} -w {{ template "parse.fullname" . }}'
+        Watch the status with: 'kubectl get svc --namespace {{ .Release.Namespace }} -w {{ include "parse.fullname" . }}'
 
-  export APP_HOST=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ template "parse.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
+  export APP_HOST=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "parse.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
 
 2. Complete your Parse Dashboard deployment by running:
 
   helm upgrade {{ .Release.Name }} stable/{{ .Chart.Name }} \
-    --set server.host=$APP_HOST,server.port={{ .Values.server.port }},server.masterKey=$(kubectl get secret --namespace {{ .Release.Namespace }} {{ template "parse.fullname" . }} -o jsonpath="{.data.master-key}" | base64 --decode),dashboard.username={{ .Values.dashboard.username }},dashboard.password=$(kubectl get secret --namespace {{ .Release.Namespace }} {{ template "parse.fullname" . }} -o jsonpath="{.data.parse-dashboard-password}" | base64 --decode){{- if .Values.global }}{{- if .Values.global.imagePullSecrets }},global.imagePullSecrets={{ .Values.global.imagePullSecrets }}{{- end }}{{- end }}
+    --set server.host=$APP_HOST,server.port={{ .Values.server.port }},server.masterKey=$(kubectl get secret --namespace {{ .Release.Namespace }} {{ include "parse.fullname" . }} -o jsonpath="{.data.master-key}" | base64 --decode),dashboard.username={{ .Values.dashboard.username }},dashboard.password=$(kubectl get secret --namespace {{ .Release.Namespace }} {{ include "parse.fullname" . }} -o jsonpath="{.data.parse-dashboard-password}" | base64 --decode){{- if .Values.global }}{{- if .Values.global.imagePullSecrets }},global.imagePullSecrets={{ .Values.global.imagePullSecrets }}{{- end }}{{- end }}
 
 {{- else }}
 
@@ -78,8 +99,9 @@ service:
 
 {{- else if eq .Values.service.type "ClusterIP" }}
 
+  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l app.kubernetes.io/name={{ template "parse.name" . }},app.kubernetes.io/component=dashboard -o jsonpath="{.items[0].metadata.name}")
+  kubectl port-forward --namespace {{ .Release.Namespace }} $POD_NAME 4040:4040 &
   echo "Parse Dashboard URL: http://127.0.0.1:4040/"
-  kubectl port-forward --namespace {{ .Release.Namespace }} svc/{{ template "parse.fullname" . }} 4040:{{ .Values.service.port }} &
 
 {{- else }}
 
@@ -87,11 +109,12 @@ service:
 
 {{- end }}
 
-2. Get your Parsh Dashboard login credentials by running:
+2. Get your Parse Dashboard login credentials by running:
 
   echo Username: {{ .Values.dashboard.username }}
-  echo Password: $(kubectl get secret --namespace {{ .Release.Namespace }} {{ template "parse.fullname" . }} -o jsonpath="{.data.parse-dashboard-password}" | base64 --decode)
+  echo Password: $(kubectl get secret --namespace {{ .Release.Namespace }} {{ include "parse.fullname" . }} -o jsonpath="{.data.parse-dashboard-password}" | base64 --decode)
 {{- end }}
 {{- end }}
 
+{{ include "parse.validateValues" . }}
 {{ include "parse.checkRollingTags" . }}

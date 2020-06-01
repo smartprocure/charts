@@ -34,6 +34,9 @@ spec:
       labels:
         app: {{ template "kubernetes-dashboard.name" . }}
         release: {{ .Release.Name }}
+{{- if .Values.podLabels }}
+{{ toYaml .Values.podLabels | indent 8 }}
+{{- end }}
     spec:
       {{- if .Values.securityContext }}
       securityContext:
@@ -89,6 +92,10 @@ spec:
 {{- end }}
           initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
           timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+{{- if .Values.dashboardContainerSecurityContext }}
+        securityContext:
+{{ toYaml .Values.dashboardContainerSecurityContext | indent 10 }}
+{{- end }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
     {{- if .Values.image.pullSecrets }}
@@ -101,6 +108,9 @@ spec:
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
     {{- end }}
+      {{- if .Values.priorityClassName }}
+      priorityClassName: "{{ .Values.priorityClassName }}"
+      {{- end }}
       volumes:
       - name: kubernetes-dashboard-certs
         secret:

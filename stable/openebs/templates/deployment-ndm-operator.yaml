@@ -1,3 +1,4 @@
+{{- if .Values.ndmOperator.enabled }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -10,11 +11,13 @@ metadata:
     heritage: {{ .Release.Service }}
     component: ndm-operator
     openebs.io/component-name: ndm-operator
+    openebs.io/version: {{ .Values.release.version }}
     name: ndm-operator
 spec:
   replicas: {{ .Values.ndmOperator.replicas }}
   strategy:
-    type: {{ .Values.ndmOperator.upgradeStrategy }}
+    type: "Recreate"
+    rollingUpdate: null
   selector:
     matchLabels:
       app: {{ template "openebs.name" . }}
@@ -32,7 +35,7 @@ spec:
       serviceAccountName: {{ template "openebs.serviceAccountName" . }}
       containers:
       - name: {{ template "openebs.fullname" . }}-ndm-operator
-        image: "{{ .Values.ndmOperator.image }}:{{ .Values.ndmOperator.imageTag }}"
+        image: "{{ .Values.image.repository }}{{ .Values.ndmOperator.image }}:{{ .Values.ndmOperator.imageTag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         readinessProbe:
           exec:
@@ -51,10 +54,28 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+        - name: SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.serviceAccountName
         - name: OPERATOR_NAME
           value: "node-disk-operator"
         - name: CLEANUP_JOB_IMAGE
-          value: "{{ .Values.ndmOperator.cleanupImage }}:{{ .Values.ndmOperator.cleanupImageTag }}"
+          value: "{{ .Values.image.repository }}{{ .Values.helper.image }}:{{ .Values.helper.imageTag }}"
+        # OPENEBS_IO_INSTALL_CRD environment variable is used to enable/disable CRD installation
+        # from NDM Operator. By default the CRDs will be installed
+        - name: OPENEBS_IO_INSTALL_CRD
+          value: "{{ .Values.crd.enableInstall }}"
+        # Process name used for matching is limited to the 15 characters
+        # present in the pgrep output.
+        # So fullname can be used here with pgrep (cmd is < 15 chars).
+        livenessProbe:
+          exec:
+            command:
+            - pgrep
+            - "ndo"
+          initialDelaySeconds: {{ .Values.ndmOperator.healthCheck.initialDelaySeconds }}
+          periodSeconds: {{ .Values.ndmOperator.healthCheck.periodSeconds }}
 {{- if .Values.ndmOperator.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.ndmOperator.nodeSelector | indent 8 }}
@@ -62,4 +83,5 @@ spec:
 {{- if .Values.ndmOperator.tolerations }}
       tolerations:
 {{ toYaml .Values.ndmOperator.tolerations | indent 8 }}
+{{- end }}
 {{- end }}

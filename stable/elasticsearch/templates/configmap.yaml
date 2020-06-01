@@ -23,7 +23,11 @@ data:
 
     path.data: ${PATH_DATA:/usr/share/elasticsearch/data}
 
+{{- if .Values.forceIpv6 }}
+    network.host: "::"
+{{- else }}
     network.host: 0.0.0.0
+{{- end }}
 
 {{- if hasPrefix "2." .Values.appVersion }}
     # see https://github.com/kubernetes/kubernetes/issues/3595
