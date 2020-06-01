@@ -1,11 +1,159 @@
 apiVersion: v1
 entries:
   elasticsearch:
-  - appVersion: 6.7.0
-    created: 2019-04-01T09:36:43.939869-07:00
+  - apiVersion: v1
+    appVersion: 6.8.6
+    created: "2020-06-01T12:40:19.121861-07:00"
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
-    digest: 927797e7c3d3ce1c5cc218981658e3cf4926c7282fa712ed1c4f7c66818ac8e1
+    digest: 1adb610a329c0285632fb401aa67e09aa49ec894abaeadaa93abdc5b7d704c22
+    home: https://www.elastic.co/products/elasticsearch
+    icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
+    maintainers:
+    - email: christian@jetstack.io
+      name: simonswine
+    - email: michael.haselton@gmail.com
+      name: icereval
+    - email: pete.brown@powerhrg.com
+      name: rendhalver
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    - email: goonohc@gmail.com
+      name: KongZ
+    - email: hfernandez@mesosphere.com
+      name: hectorj2f
+    name: elasticsearch
+    sources:
+    - https://www.elastic.co/products/elasticsearch
+    - https://github.com/jetstack/elasticsearch-pet
+    - https://github.com/giantswarm/kubernetes-elastic-stack
+    - https://github.com/GoogleCloudPlatform/elasticsearch-docker
+    - https://github.com/clockworksoul/helm-elasticsearch
+    - https://github.com/pires/kubernetes-elasticsearch-cluster
+    urls:
+    - docs/elasticsearch-1.32.4.tgz
+    version: 1.32.4
+  - apiVersion: v1
+    appVersion: 6.7.0
+    created: "2020-06-01T12:40:19.120761-07:00"
+    description: Flexible and powerful open source, distributed real-time search and
+      analytics engine.
+    digest: 008bd59f84f431099b0d521d9d4fbe3ddf74c5aabb7105bbeafe5ee009ea7c56
+    home: https://www.elastic.co/products/elasticsearch
+    icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
+    maintainers:
+    - email: christian@jetstack.io
+      name: simonswine
+    - email: michael.haselton@gmail.com
+      name: icereval
+    - email: pete.brown@powerhrg.com
+      name: rendhalver
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    - email: goonohc@gmail.com
+      name: KongZ
+    - email: hfernandez@mesosphere.com
+      name: hectorj2f
+    name: elasticsearch
+    sources:
+    - https://www.elastic.co/products/elasticsearch
+    - https://github.com/jetstack/elasticsearch-pet
+    - https://github.com/giantswarm/kubernetes-elastic-stack
+    - https://github.com/GoogleCloudPlatform/elasticsearch-docker
+    - https://github.com/clockworksoul/helm-elasticsearch
+    - https://github.com/pires/kubernetes-elasticsearch-cluster
+    urls:
+    - docs/elasticsearch-1.28.5.tgz
+    version: 1.28.5
+  - apiVersion: v1
+    appVersion: 6.7.0
+    created: "2020-06-01T12:40:19.118681-07:00"
+    description: Flexible and powerful open source, distributed real-time search and
+      analytics engine.
+    digest: 3c797fff605a6926dbd1ef2fabb4e0f14155bf60d184cdb6b2de74011fd6eb4d
+    home: https://www.elastic.co/products/elasticsearch
+    icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
+    maintainers:
+    - email: christian@jetstack.io
+      name: simonswine
+    - email: michael.haselton@gmail.com
+      name: icereval
+    - email: pete.brown@powerhrg.com
+      name: rendhalver
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    - email: hfernandez@mesosphere.com
+      name: hectorj2f
+    name: elasticsearch
+    sources:
+    - https://www.elastic.co/products/elasticsearch
+    - https://github.com/jetstack/elasticsearch-pet
+    - https://github.com/giantswarm/kubernetes-elastic-stack
+    - https://github.com/GoogleCloudPlatform/elasticsearch-docker
+    - https://github.com/clockworksoul/helm-elasticsearch
+    - https://github.com/pires/kubernetes-elasticsearch-cluster
+    urls:
+    - docs/elasticsearch-1.28.0.tgz
+    version: 1.28.0
+  - appVersion: 6.7.0
+    created: "2020-06-01T12:40:19.116576-07:00"
+    description: Flexible and powerful open source, distributed real-time search and
+      analytics engine.
+    digest: fac17737045084b33ed802eb485f43132d1219bbfbca071f9a54a19e177e5139
+    home: https://www.elastic.co/products/elasticsearch
+    icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
+    maintainers:
+    - email: christian@jetstack.io
+      name: simonswine
+    - email: michael.haselton@gmail.com
+      name: icereval
+    - email: pete.brown@powerhrg.com
+      name: rendhalver
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: elasticsearch
+    sources:
+    - https://www.elastic.co/products/elasticsearch
+    - https://github.com/jetstack/elasticsearch-pet
+    - https://github.com/giantswarm/kubernetes-elastic-stack
+    - https://github.com/GoogleCloudPlatform/elasticsearch-docker
+    - https://github.com/clockworksoul/helm-elasticsearch
+    - https://github.com/pires/kubernetes-elasticsearch-cluster
+    urls:
+    - docs/elasticsearch-1.26.1.tgz
+    version: 1.26.1
+  - appVersion: 6.7.0
+    created: "2020-06-01T12:40:19.115364-07:00"
+    description: Flexible and powerful open source, distributed real-time search and
+      analytics engine.
+    digest: c2d99872091485eb640a4a444d41c3afeb529bb1e2040f099794b6003f678fcb
+    home: https://www.elastic.co/products/elasticsearch
+    icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
+    maintainers:
+    - email: christian@jetstack.io
+      name: simonswine
+    - email: michael.haselton@gmail.com
+      name: icereval
+    - email: pete.brown@powerhrg.com
+      name: rendhalver
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: elasticsearch
+    sources:
+    - https://www.elastic.co/products/elasticsearch
+    - https://github.com/jetstack/elasticsearch-pet
+    - https://github.com/giantswarm/kubernetes-elastic-stack
+    - https://github.com/GoogleCloudPlatform/elasticsearch-docker
+    - https://github.com/clockworksoul/helm-elasticsearch
+    - https://github.com/pires/kubernetes-elasticsearch-cluster
+    urls:
+    - docs/elasticsearch-1.24.0.tgz
+    version: 1.24.0
+  - appVersion: 6.7.0
+    created: "2020-06-01T12:40:19.114144-07:00"
+    description: Flexible and powerful open source, distributed real-time search and
+      analytics engine.
+    digest: b405a1032f954227f45bd5b0eca90d0735512c2c08045bbeb660257638d0a6b1
     home: https://www.elastic.co/products/elasticsearch
     icon: https://static-www.elastic.co/assets/blteb1c97719574938d/logo-elastic-elasticsearch-lt.svg
     maintainers:
@@ -29,7 +177,7 @@ entries:
     - docs/elasticsearch-1.22.0.tgz
     version: 1.22.0
   - appVersion: 6.6.2
-    created: 2019-04-01T09:36:43.938488-07:00
+    created: "2020-06-01T12:40:19.11254-07:00"
     description: Flexible and powerful open source, distributed real-time search and
       analytics engine.
     digest: c7d44700fe9c05837ffdd0b44a74178f15d53d4e4eaddc1db4440387f70c17eb
@@ -55,4 +203,204 @@ entries:
     urls:
     - docs/elasticsearch-1.21.3.tgz
     version: 1.21.3
-generated: 2019-04-01T09:36:43.935706-07:00
+  elasticsearch-exporter:
+  - apiVersion: v1
+    appVersion: 1.1.0
+    created: "2020-06-01T12:40:19.125877-07:00"
+    description: Elasticsearch stats exporter for Prometheus
+    digest: f3c81892aef7d6679196c4527f7648144bbcddd7976a73cb08387de7d7a392a5
+    home: https://github.com/justwatchcom/elasticsearch_exporter
+    keywords:
+    - metrics
+    - elasticsearch
+    - monitoring
+    kubeVersion: '>=1.10.0-0'
+    maintainers:
+    - email: sven.mueller@commercetools.com
+      name: svenmueller
+    - email: carlos@carlosbecker.com
+      name: caarlos0
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: elasticsearch-exporter
+    sources:
+    - https://github.com/justwatchcom/elasticsearch_exporter
+    urls:
+    - docs/elasticsearch-exporter-3.3.0.tgz
+    version: 3.3.0
+  - apiVersion: v1
+    appVersion: 1.0.2
+    created: "2020-06-01T12:40:19.125294-07:00"
+    description: Elasticsearch stats exporter for Prometheus
+    digest: a8ddccb5c95df3e7ebb5b3c26df950b81f75dbccacea85d924f5c48ba0a4bb3a
+    home: https://github.com/justwatchcom/elasticsearch_exporter
+    keywords:
+    - metrics
+    - elasticsearch
+    - monitoring
+    maintainers:
+    - email: sven.mueller@commercetools.com
+      name: svenmueller
+    name: elasticsearch-exporter
+    sources:
+    - https://github.com/justwatchcom/elasticsearch_exporter
+    urls:
+    - docs/elasticsearch-exporter-1.4.0.tgz
+    version: 1.4.0
+  - apiVersion: v1
+    appVersion: 1.0.2
+    created: "2020-06-01T12:40:19.123938-07:00"
+    description: Elasticsearch stats exporter for Prometheus
+    digest: 5864e696ab00264bd930d2abda324e5c1329b87eb83b259c7dd9c2713deb15b5
+    home: https://github.com/justwatchcom/elasticsearch_exporter
+    keywords:
+    - metrics
+    - elasticsearch
+    - monitoring
+    maintainers:
+    - email: sven.mueller@commercetools.com
+      name: svenmueller
+    name: elasticsearch-exporter
+    sources:
+    - https://github.com/justwatchcom/elasticsearch_exporter
+    urls:
+    - docs/elasticsearch-exporter-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v1
+    appVersion: 1.0.2
+    created: "2020-06-01T12:40:19.122536-07:00"
+    description: Elasticsearch stats exporter for Prometheus
+    digest: 57d7caea5bd52ec8fc9647e0698dc7567d7f2ef10ad579897ed3a3c1a6aeb18f
+    home: https://github.com/justwatchcom/elasticsearch_exporter
+    keywords:
+    - metrics
+    - elasticsearch
+    - monitoring
+    maintainers:
+    - email: sven.mueller@commercetools.com
+      name: svenmueller
+    name: elasticsearch-exporter
+    sources:
+    - https://github.com/justwatchcom/elasticsearch_exporter
+    urls:
+    - docs/elasticsearch-exporter-1.2.0.tgz
+    version: 1.2.0
+  mssql-linux:
+  - apiVersion: v1
+    appVersion: 14.0.3023.8
+    created: "2020-06-01T12:40:19.128038-07:00"
+    description: SQL Server 2017 Linux Helm Chart
+    digest: 8de45324316afc9f1ef79564786c13556872fecf02e1bfb188015080be58d55a
+    home: https://hub.docker.com/r/microsoft/mssql-server-linux/
+    icon: https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1I4Dx
+    maintainers:
+    - email: tliddle30@gmail.com
+      name: thomasliddledba
+    - email: winromulus@winromulus.com
+      name: winromulus
+    name: mssql-linux
+    sources:
+    - https://hub.docker.com/r/microsoft/mssql-server-linux/
+    urls:
+    - docs/mssql-linux-0.11.1.tgz
+    version: 0.11.1
+  - apiVersion: v1
+    appVersion: 14.0.3023.8
+    created: "2020-06-01T12:40:19.127544-07:00"
+    description: SQL Server 2017 Linux Helm Chart
+    digest: 7b27a90e43d2046f002a3c0cd026574e98c067222bd4cf6280b7f64a77135c30
+    home: https://hub.docker.com/r/microsoft/mssql-server-linux/
+    icon: https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1I4Dx
+    maintainers:
+    - email: tliddle30@gmail.com
+      name: thomasliddledba
+    name: mssql-linux
+    sources:
+    - https://hub.docker.com/r/microsoft/mssql-server-linux/
+    urls:
+    - docs/mssql-linux-0.10.0.tgz
+    version: 0.10.0
+  - apiVersion: v1
+    appVersion: 14.0.3023.8
+    created: "2020-06-01T12:40:19.130369-07:00"
+    description: SQL Server 2017 Linux Helm Chart
+    digest: 8d66b7498ce0c9982163f74f0fe72d6fc732cb7a8e9db3d3702d49200d45aa9f
+    home: https://hub.docker.com/r/microsoft/mssql-server-linux/
+    icon: https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1I4Dx
+    maintainers:
+    - email: tliddle30@gmail.com
+      name: thomasliddledba
+    name: mssql-linux
+    sources:
+    - https://hub.docker.com/r/microsoft/mssql-server-linux/
+    urls:
+    - docs/mssql-linux-0.8.0.tgz
+    version: 0.8.0
+  - apiVersion: v1
+    appVersion: 14.0.3023.8
+    created: "2020-06-01T12:40:19.128972-07:00"
+    description: SQL Server 2017 Linux Helm Chart
+    digest: 7dcf73fc97371948d335a7386538eb15316f359ef7be1895de6d17a3d591000e
+    home: https://hub.docker.com/r/microsoft/mssql-server-linux/
+    icon: https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1I4Dx
+    maintainers:
+    - email: tliddle30@gmail.com
+      name: thomasliddledba
+    name: mssql-linux
+    sources:
+    - https://hub.docker.com/r/microsoft/mssql-server-linux/
+    urls:
+    - docs/mssql-linux-0.7.0.tgz
+    version: 0.7.0
+  prometheus-mongodb-exporter:
+  - apiVersion: v1
+    appVersion: v0.10.0
+    created: "2020-06-01T12:40:19.131616-07:00"
+    description: A Prometheus exporter for MongoDB metrics
+    digest: 72a562fee1bd61633a3cc3ba23d0aab5eedfa3b47ab84eb385b2c31391959e68
+    home: https://github.com/percona/mongodb_exporter
+    keywords:
+    - exporter
+    - metrics
+    - mongodb
+    - prometheus
+    maintainers:
+    - email: ssheehy@firescope.com
+      name: steven-sheehy
+    name: prometheus-mongodb-exporter
+    sources:
+    - https://github.com/percona/mongodb_exporter
+    urls:
+    - docs/prometheus-mongodb-exporter-2.5.0.tgz
+    version: 2.5.0
+  - apiVersion: v1
+    appVersion: v0.7.0
+    created: "2020-06-01T12:40:19.131213-07:00"
+    description: A Prometheus exporter for MongoDB metrics
+    digest: bced8bca45844aee07b797232b0a6385a36aed1a31aae0bb525ffce7dffe583a
+    home: https://github.com/percona/mongodb_exporter
+    keywords:
+    - exporter
+    - metrics
+    - mongodb
+    - prometheus
+    maintainers:
+    - email: ssheehy@firescope.com
+      name: steven-sheehy
+    name: prometheus-mongodb-exporter
+    sources:
+    - https://github.com/percona/mongodb_exporter
+    urls:
+    - docs/prometheus-mongodb-exporter-2.1.0.tgz
+    version: 2.1.0
+  prometheus-sql-exporter:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-06-01T12:40:19.131968-07:00"
+    description: A Helm chart for Kubernetes
+    digest: 3a98a74fe880f09771d68893d1f98b191a1d31aeea1647eba2d84e55ac4221d5
+    name: prometheus-sql-exporter
+    urls:
+    - docs/prometheus-sql-exporter-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-06-01T12:40:19.110628-07:00"
